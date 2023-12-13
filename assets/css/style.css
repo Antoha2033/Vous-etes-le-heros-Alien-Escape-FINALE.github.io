@@ -1,0 +1,298 @@
+
+
+:root {
+  --background: #56AB91;
+  --background_contenu: #99E2B4;
+  --police: rgb(207, 252, 155);
+  --bouton: #;
+  --bouton_hover: rgba(123, 151, 91, 0.5);
+  --police-bouton: rgb(207, 252, 155);
+
+  --bouton2_hover: #e9c46a;
+  
+}
+
+body{
+  padding: 3rem;
+  line-height: 1.314;
+}
+
+::selection{
+ background: rgba(195, 239, 143, 0.5);
+}
+
+.glitch {
+  min-height: 100vh;
+  background: #252926;
+  color: #c3ef8f;
+  font-family: Monaco, "Courier New", Courier, monospace;
+  animation: crt 5ms infinite;
+  text-shadow:
+      0 0 1px #c3ef8f,
+      1px 1px 1px blue,
+      -1px -1px 1px red;
+  
+  &::after {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background:
+          repeating-linear-gradient(
+              top, transparent 0px,
+              transparent 2px,
+              rgba(0, 0, 0, 0.2) 2px,
+              rgba(0, 0, 0, 0.2) 4px
+          );
+      background-size: 100% 4px;
+      box-shadow:
+          inset 0 0 10em rgba(0, 0, 0, 0.5),
+          inset 0 0 2em rgba(0, 0, 0, 0.1);
+      z-index: -1;
+      content: "";
+  }
+
+  h2,h3,h4 {
+      font-weight: 400;
+      color: #c3ef8f;
+  }
+  
+  a {
+      color: #c3ef8f;
+      background: rgba(195, 239, 143, 0.5);
+      border-color: rgba(195, 239, 143, 0.5);
+      &:hover {
+          border-color: transparent !important;
+      }
+  }
+   
+}
+
+.container {
+  position: relative;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  *{
+      filter: blur(0.5px);
+      animation:
+          10s distort 15s infinite alternate,
+          blur 0ms infinite,
+          flick 50ms infinite,
+          jump 50ms infinite;
+  }
+}
+
+.container,
+.glitch {
+  width: 100%; /* Adjust the width if needed */
+  max-width: 1000px; /* Set your desired max width */
+  margin: 0 auto; /* Center horizontally */
+  text-align: center; /* Center text within */
+}
+
+#media img {
+  max-width: 80%; /* Adjust the value as needed */
+  
+}
+
+#media video {
+  width: 80%;
+  height: auto;
+  display: flex;
+  width: 96%;
+  max-width: 100%;
+  margin: 20px;
+}
+
+button:hover {
+  background-color: var(--bouton_hover);
+}
+
+#resetButton {
+  background-color: var(--bouton2);
+  color: var(--police);
+  font-size: 20px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px 10px;
+}
+
+#resetButton:hover {
+  background-color: var(--bouton2_hover);
+}
+
+#button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: var(--bouton);
+  color: var(--police-bouton);
+  font-size: 20px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px 10px;
+}
+
+/* Mute Checkbox */
+#muteCheckbox {
+  margin-top: 100px; /* Adjust the margin-top value to lower or raise the checkbox */
+}
+
+/* Mute Label */
+label[for="muteCheckbox"] {
+  margin-bottom: 50px; /* Adjust the margin-top value to lower or raise the label */
+}
+
+
+
+
+
+
+@keyframes crt {
+  28% {
+      background: #232624;
+  }
+  30% {
+      background: #272c28;
+  }
+  33% {
+      background: #232624;
+  }
+  34% {
+      background: #272c28;
+  }
+  35% {
+      background: #202421;
+  }
+}
+@keyframes blur {
+  0% {
+      filter: blur(1px);
+      opacity: 0.8;
+  }
+  50% {
+      filter: blur(1px);
+      opacity: 1;
+  }
+  100% {
+      filter: blur(1px);
+      opacity: 0.8;
+  }
+}
+@keyframes flick {
+  50% {
+      left: 2px;
+  }
+  51% {
+      left: 0;
+  }
+}
+@keyframes jump {
+  30% {
+      top: 10px;
+  }
+  31% {
+      top: 0;
+  }
+}
+@keyframes distort {
+  10% {
+      opacity: 1;
+      top: 0;
+      left: 0;
+      transform: scale(1, 1);
+      transform: skew(0, 0);
+  }
+  11% {
+      opacity: 0.8;
+      top: 0px;
+      left: -100px;
+      transform: scale(1, 1.2);
+      transform: skew(50deg, 0);
+  }
+  12% {
+      opacity: 0.2;
+      top: 0px;
+      left: 100px;
+      transform: scale(1, 1.2);
+      transform: skew(-80deg, 0);
+  }
+  13% {
+      opacity: 1;
+      top: 0;
+      left: 0;
+      transform: scale(1, 1);
+      transform: skew(0, 0);
+  }
+}
+@keyframes appear {
+  0% {
+      filter: blur(5px);
+      opacity: 0.85;
+  }
+  50% {
+      filter: blur(3px);
+      opacity: 0.85;
+  }
+  100% {
+      filter: blur(4px);
+      opacity: 0.85;
+  }
+}
+@keyframes snapped {
+  0% {
+      filter: blur(5px);
+      opacity: 0.85;
+  }
+  50% {
+      filter: blur(3px);
+      opacity: 0.85;
+  }
+  100% {
+      filter: blur(4px);
+      opacity: 0.85;
+  }
+}
+@keyframes beersip {
+  0% {
+      top: 0;
+  }
+  10% {
+      top: -10%;
+  }
+  12% {
+      top: 0;
+  }
+  54% {
+      top: 0;
+  }
+  55% {
+      top: -30%;
+  }
+  56% {
+      top: 0;
+  }
+  86% {
+      top: 0;
+  }
+  87% {
+      top: -60%;
+  }
+  88% {
+      top: 0;
+  }
+}

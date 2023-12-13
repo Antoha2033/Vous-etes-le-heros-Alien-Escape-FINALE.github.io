@@ -1,5 +1,4 @@
 
-
 :root {
   --background: #56AB91;
   --background_contenu: #99E2B4;
@@ -86,14 +85,14 @@ body{
 
 .container,
 .glitch {
-  width: 100%; /* Adjust the width if needed */
-  max-width: 1000px; /* Set your desired max width */
-  margin: 0 auto; /* Center horizontally */
-  text-align: center; /* Center text within */
+  width: 100%; 
+  max-width: 1000px; 
+  margin: 0 auto; 
+  text-align: center; 
 }
 
 #media img {
-  max-width: 80%; /* Adjust the value as needed */
+  max-width: 80%; 
   
 }
 
@@ -149,12 +148,12 @@ button {
 
 /* Mute Checkbox */
 #muteCheckbox {
-  margin-top: 100px; /* Adjust the margin-top value to lower or raise the checkbox */
+  margin-top: 100px; 
 }
 
 /* Mute Label */
 label[for="muteCheckbox"] {
-  margin-bottom: 50px; /* Adjust the margin-top value to lower or raise the label */
+  margin-bottom: 50px; 
 }
 
 

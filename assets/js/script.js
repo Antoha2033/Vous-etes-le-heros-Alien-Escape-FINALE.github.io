@@ -4,9 +4,6 @@ const gameData = {
   twistActivated: localStorage.getItem("twistActivated") === "true" || false,
 };
 
-
-
-
 const chapters = {
   start: {
     subtitle: "Début",
@@ -202,11 +199,8 @@ const chapters = {
       },
     ],
     onInit: function () {
-      // Set a flag indicating that the player has found the crowbar
       foundTool = true;
-      // Add the crowbar to the inventory
       gameData.inventory.push("crowbar");
-      // Save the inventory state
       localStorage.setItem("inventory", JSON.stringify(gameData.inventory));
     },
   },
@@ -303,22 +297,18 @@ const chapters = {
       },
     ],
   },
-
+        // utiliser la clé
   usekey: {
     subtitle: "Utilisez la clé",
     img: "./assets/images/13.png",
     text: "",
     options: [],
     onInit: function () {
-      // Check if the player has the key in their inventory
       if (gameData.inventory.includes("key")) {
-        // If the player has the key, show the "YOU WIN" text
         this.text = "Tu réussis à ouvrir l'ascenseur, après avoir appuyé sur les bons boutons et tiré les bons leviers, l'ascenseur commence à monter. Tu t'assois sur un tabouret, prenant un moment pour te reposer, savourant le fait que bientôt tu seras en sécurité. La sensation rassurante de l'ascension te laisse avec l'espoir que cette épreuve dans la mine touche à sa fin. ";
 
       } else {
-        // If the player doesn't have the key, show a message indicating they can't continue
         this.text = "Vous n'avez pas la clé pour ouvrir la capsule de sauvetage. Vous ne pouvez pas continuer.";
-        // Add an option to return to escapepodroom
         this.options.push({
           text: "Retournez à la pièce des capsules",
           action: "escapepodroom",
@@ -327,22 +317,18 @@ const chapters = {
     },
   },
   
-  
+          // utiliser la Crowbar
   usecrowbar: {
     subtitle: "Utilisez le pied de biche",
     img: "./assets/images/13.png",
     text: "",
     options: [],
     onInit: function () {
-      // Check if the player has the crowbar in their inventory
       if (gameData.inventory.includes("crowbar")) {
-        // If the player has the crowbar, show the "YOU WIN" text
         this.text = "Tu réussis à ouvrir l'ascenseur, après avoir appuyé sur les bons boutons et tiré les bons leviers, l'ascenseur commence à monter. Tu t'assois sur un tabouret, prenant un moment pour te reposer, savourant le fait que bientôt tu seras en sécurité. La sensation rassurante de l'ascension te laisse avec l'espoir que cette épreuve dans la mine touche à sa fin. ";
 
       } else {
-        // If the player doesn't have the crowbar, show a message indicating they can't continue
         this.text = "Vous n'avez pas le pied de biche pour ouvrir la capsule de sauvetage. Vous ne pouvez pas continuer.";
-        // Add an option to return to escapepodroom
         this.options.push({
           text: "Retournez à la pièce des capsules",
           action: "escapepodroom",
@@ -398,7 +384,6 @@ function toggleSound() {
   sound1.muted = isChecked;
   sound2.muted = isChecked;
 
-  // Save mute status
   localStorage.setItem("muteStatus", isChecked);
 }
 
@@ -419,7 +404,7 @@ function displayChapter(chapterKey, selectedOption) {
     videoElement.autoplay = true;
     videoElement.loop = true;
     videoElement.src = chapter.video;
-    videoElement.muted = muteCheckbox.checked; // Mute the video based on checkbox state
+    videoElement.muted = muteCheckbox.checked; 
     mediaWrapper.appendChild(videoElement);
   } else {
     const imageElement = document.createElement("img");
@@ -445,8 +430,6 @@ for (const option of chapter.options) {
   localStorage.setItem("currentChapter", gameData.currentChapter);
   localStorage.setItem("inventory", JSON.stringify(gameData.inventory));
   localStorage.setItem("twistActivated", gameData.twistActivated);
-
-  // Save the selected option in local storage
   localStorage.setItem("selectedOption", JSON.stringify(selectedOption));
 }
 
@@ -473,16 +456,11 @@ function selectOption(option) {
   sound2.play();
 
   gameData.currentChapter = option.action;
-
-  // Save current state, including the selected option
   localStorage.setItem("currentChapter", gameData.currentChapter);
   localStorage.setItem("inventory", JSON.stringify(gameData.inventory));
   localStorage.setItem("twistActivated", gameData.twistActivated);
-
-  // Save the selected option in local storage
   localStorage.setItem("selectedOption", JSON.stringify(option));
 
-  // Check if the new chapter has an onInit function and call it
   if (chapters[gameData.currentChapter].onInit) {
     chapters[gameData.currentChapter].onInit();
   }
@@ -491,5 +469,4 @@ function selectOption(option) {
 }
 
 
-// Initialize the game
 displayChapter(gameData.currentChapter);
